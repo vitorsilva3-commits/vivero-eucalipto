@@ -7,9 +7,20 @@
     "severity": "alta",
     "phase": "Germinación / Post-emergencia",
     "emoji": "🌱",
+    "photos": [
+      "/images/damping_off.jpeg",
+      "/images/damping_off_2.jpeg"
+    ],
     "photo": "/images/damping_off.jpeg",
     "seasonText": "Ocurre durante todo el año en viveros, con mayor incidencia en primavera y verano (sep–feb) cuando la producción de plántulas es más intensa y las temperaturas favorecen el desarrollo fúngico.",
-    "peakMonths": [9, 10, 11, 12, 1, 2],
+    "peakMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
     "shortDesc": "Destrucción de plántulas en la germinación y post-emergencia, ocurriendo en manchones. Provoca marchitamiento, curvatura y muerte rápida.",
     "symptoms": "Lesión necrótica en la región del cuello de la plántula que avanza hacia el marchitamiento y curvatura de los cotiledones. Las plantas mueren rápidamente en patrón de manchón, con aspecto de 'tombamiento'. Las raíces presentan oscurecimiento y pudrición.",
     "conditions": "Alta humedad en el vivero (HR > 80%), sustratos con mal drenaje, riego excesivo, temperatura entre 18–28 °C y alta densidad de plantas favorecen el ataque y la diseminación de los patógenos.",
@@ -22,8 +33,19 @@
       "Retirar inmediatamente las plantas con síntomas",
       "Desinfectar tubetes y bandejas entre ciclos"
     ],
-    "species": ["E. globulus", "E. nitens", "E. grandis", "E. urophylla"],
-    "tags": ["vivero", "manchón", "post-emergencia", "cuello", "raíz"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. grandis",
+      "E. urophylla"
+    ],
+    "tags": [
+      "vivero",
+      "manchón",
+      "post-emergencia",
+      "cuello",
+      "raíz"
+    ]
   },
   {
     "id": 2,
@@ -33,9 +55,19 @@
     "severity": "alta",
     "phase": "Toda la fase de vivero",
     "emoji": "🔘",
+    "photos": [
+      "/images/botrytis.jpeg",
+      "/images/botrytis_2.jpeg"
+    ],
     "photo": "/images/botrytis.jpeg",
     "seasonText": "Predominante en otoño e invierno (abr–ago), cuando las temperaturas son frescas (15–20 °C) y la humedad relativa es alta en las regiones del Biobío y La Araucanía. Puede ocurrir en primavera en viveros con baja ventilación.",
-    "peakMonths": [4, 5, 6, 7, 8],
+    "peakMonths": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
     "shortDesc": "Infección foliar y de brotes con masa grisácea de esporas. Muy común en climas fríos y húmedos del sur de Chile.",
     "symptoms": "Lesiones acuosas que evolucionan hacia necrosis cubiertas por una masa gris y pulverulenta de conidios (Botrytis). Afecta hojas, brotes y estacas en enraizamiento. En condiciones de baja luminosidad y alta humedad, el avance es rápido.",
     "conditions": "Temperaturas frescas (15–20 °C), alta humedad relativa (>85%), baja circulación de aire, períodos prolongados de mojado foliar. Condiciones comunes en viveros cerrados o en regiones del Biobío y La Araucanía en invierno.",
@@ -47,8 +79,18 @@
       "Remover restos vegetales y plantas infectadas",
       "Reducir humedad interna de invernaderos"
     ],
-    "species": ["E. globulus", "E. nitens", "E. camaldulensis"],
-    "tags": ["esporas", "gris", "hojas", "estacas", "clima frío"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. camaldulensis"
+    ],
+    "tags": [
+      "esporas",
+      "gris",
+      "hojas",
+      "estacas",
+      "clima frío"
+    ]
   },
   {
     "id": 3,
@@ -58,9 +100,17 @@
     "severity": "alta",
     "phase": "Plantas y mini-estacas",
     "emoji": "🍂",
+    "photos": [],
     "photo": null,
     "seasonText": "Mayor incidencia en primavera y verano (oct–mar), cuando las temperaturas cálidas (22–28 °C) combinadas con la alta humedad de los sistemas de nebulización favorecen la esporulación y dispersión del patógeno.",
-    "peakMonths": [10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Manchas foliares circulares rojo-violáceas con defoliación intensa. Causa también 'canela negra' en la base de las plantas.",
     "symptoms": "Manchas circulares con coloración rojo-violácea a castaño-oscuro, iniciando en el ápice o bordes del limbo foliar. En condiciones húmedas, ocurre defoliación severa. El patógeno puede causar también lesiones oscuras en la base de las plantas (síntoma de 'canela negra') y pudrición de estacas.",
     "conditions": "Alta humedad (>80%), temperaturas de 22–28 °C y tejido joven y tierno. Muy frecuente en viveros con sistema de nebulización. La proximidad entre plantas facilita la diseminación.",
@@ -72,8 +122,20 @@
       "Sustrato esterilizado y drenante",
       "Higienización rigurosa de tubetes y bandejas"
     ],
-    "species": ["E. grandis", "E. dunnii", "E. saligna", "E. urophylla", "E. globulus"],
-    "tags": ["mancha foliar", "defoliación", "canela negra", "estacas", "nebulización"]
+    "species": [
+      "E. grandis",
+      "E. dunnii",
+      "E. saligna",
+      "E. urophylla",
+      "E. globulus"
+    ],
+    "tags": [
+      "mancha foliar",
+      "defoliación",
+      "canela negra",
+      "estacas",
+      "nebulización"
+    ]
   },
   {
     "id": 4,
@@ -83,9 +145,17 @@
     "severity": "alta",
     "phase": "Plantas jóvenes (hasta 2 años)",
     "emoji": "🟡",
+    "photos": [],
     "photo": null,
     "seasonText": "Epidemias más severas en primavera (sep–nov), coincidiendo con la brotación activa de tejido joven y las lluvias primaverales que favorecen el mojado foliar prolongado. Puede ocurrir también en otoño (mar–may) con condiciones húmedas.",
-    "peakMonths": [9, 10, 11, 3, 4, 5],
+    "peakMonths": [
+      9,
+      10,
+      11,
+      3,
+      4,
+      5
+    ],
     "shortDesc": "Pústulas amarillo-anaranjadas en tejidos tiernos. Una de las enfermedades más devastadoras del eucalipto en las Américas.",
     "symptoms": "Pústulas de coloración amarillo-anaranjada viva en los tejidos jóvenes: hojas en formación, pecíolos y terminales de ramas. Las masas pulverulentas de uredosporas son características. Con el tiempo aparecen áreas necróticas hipertrofiadas con coloración ferruginosa. En ataques intensos, ocurre muerte de los brotes apicales e incluso de la planta entera.",
     "conditions": "Temperaturas entre 15–25 °C (óptimo: 18–22 °C), alta humedad, período de mojado foliar prolongado (>6h) y presencia de tejido joven. Las regiones del centro-sur de Chile con lluvias frecuentes son altamente favorables.",
@@ -97,8 +167,20 @@
       "Monitoreo con evaluación de pústulas",
       "Evitar plantación de especies altamente susceptibles en zonas de alto riesgo"
     ],
-    "species": ["E. globulus", "E. nitens", "E. camaldulensis", "E. grandis", "E. saligna"],
-    "tags": ["pústulas", "amarillo", "hojas jóvenes", "viento", "Mirtáceas"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. camaldulensis",
+      "E. grandis",
+      "E. saligna"
+    ],
+    "tags": [
+      "pústulas",
+      "amarillo",
+      "hojas jóvenes",
+      "viento",
+      "Mirtáceas"
+    ]
   },
   {
     "id": 5,
@@ -108,9 +190,19 @@
     "severity": "media",
     "phase": "Plantas clonales y minitocos",
     "emoji": "⬜",
+    "photos": [
+      "/images/oidio.jpeg",
+      "/images/oidio_2.jpeg"
+    ],
     "photo": "/images/oidio.jpeg",
     "seasonText": "Más frecuente en otoño y principios de invierno (mar–jul), cuando las condiciones son más secas y con menor mojado foliar, especialmente en viveros cubiertos. Al contrario de otras enfermedades, es favorecido por baja humedad.",
-    "peakMonths": [3, 4, 5, 6, 7],
+    "peakMonths": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
     "shortDesc": "Polvo blanco-grisáceo en las hojas. Frecuente en minijardines con poco mojado foliar. Causado por hongos del género Oidium.",
     "symptoms": "Crecimiento micelial superficial de aspecto blanco-grisáceo (polvo) en la cara superior e inferior de las hojas. Causa amarillamiento, enrollamiento foliar y caída prematura de hojas. Puede causar distorsión del crecimiento y clorosis en áreas afectadas. Muy común en plantas clonales y minitocos en minijardines clonales.",
     "conditions": "Clima seco con baja humedad relativa y poco mojado foliar. Temperaturas suaves de 18–25 °C. Al contrario de la mayoría de los hongos, el oídio es favorecido por condiciones de baja humedad y desarrollo en invernadero cerrado.",
@@ -123,8 +215,18 @@
       "Buena aireación en el minijardín clonal",
       "Rotación de fungicidas para evitar resistencia"
     ],
-    "species": ["E. grandis", "E. urophylla", "E. globulus"],
-    "tags": ["polvo blanco", "minijardín", "clonal", "baja humedad", "hojas"]
+    "species": [
+      "E. grandis",
+      "E. urophylla",
+      "E. globulus"
+    ],
+    "tags": [
+      "polvo blanco",
+      "minijardín",
+      "clonal",
+      "baja humedad",
+      "hojas"
+    ]
   },
   {
     "id": 6,
@@ -134,9 +236,17 @@
     "severity": "media",
     "phase": "Estaquillado / Enraizamiento",
     "emoji": "🪵",
+    "photos": [],
     "photo": null,
     "seasonText": "Ocurre durante todo el año, con mayor incidencia en primavera y verano (sep–feb) cuando los ciclos de propagación vegetativa son más frecuentes y las temperaturas favorecen el desarrollo fúngico en el sustrato.",
-    "peakMonths": [9, 10, 11, 12, 1, 2],
+    "peakMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
     "shortDesc": "Oscurecimiento de la base de la estaca que avanza hasta el ápice, impidiendo el enraizamiento y causando muerte de las yemas.",
     "symptoms": "Oscurecimiento y necrosis de la región de interfaz de la estaca con el sustrato, avanzando hacia el ápice. Las yemas mueren antes de enraizar. En casos graves, toda la estaca se pudre. La colonia fúngica puede ser visible como micelio blanco o oscuro en la base.",
     "conditions": "Sustrato con alta humedad y aireación deficiente, temperatura >22 °C, presencia de hongos en el sustrato o en el agua de riego. El estaquillado es la fase más crítica por involucrar tejido herido sin protección.",
@@ -148,8 +258,19 @@
       "Sustrato con buen drenaje y porosidad",
       "Evitar estrés hídrico y exceso de riego"
     ],
-    "species": ["E. benthamii", "E. dunnii", "E. saligna", "E. grandis"],
-    "tags": ["estaquillado", "base", "enraizamiento", "yemas", "sustrato"]
+    "species": [
+      "E. benthamii",
+      "E. dunnii",
+      "E. saligna",
+      "E. grandis"
+    ],
+    "tags": [
+      "estaquillado",
+      "base",
+      "enraizamiento",
+      "yemas",
+      "sustrato"
+    ]
   },
   {
     "id": 7,
@@ -159,9 +280,19 @@
     "severity": "media",
     "phase": "Plantas en tubetes",
     "emoji": "🫚",
+    "photos": [
+      "/images/phytophthora.jpeg"
+    ],
     "photo": "/images/phytophthora.jpeg",
     "seasonText": "Presente durante todo el año en viveros con riego intensivo. Los brotes más severos ocurren en primavera-verano (oct–mar) cuando las altas temperaturas aceleran el ciclo de Phytophthora y el riego es más frecuente.",
-    "peakMonths": [10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Amarillamiento y secado de la parte aérea con raíces oscurecidas y podridas. El sustrato encharcado es el principal factor.",
     "symptoms": "Decaimiento general de la planta, clorosis foliar, marchitez comenzando por ramas inferiores y exudación de goma en la base del tronco. Las raíces afectadas muestran signos de pudrición con partes necróticas y desintegración del tejido radicular. La planta se marchita incluso en sustrato húmedo.",
     "conditions": "Sustrato encharcado, temperaturas entre 20–30 °C, baja aireación de las raíces, agua de riego contaminada. El exceso de riego es el principal factor predisponente en los viveros chilenos.",
@@ -174,8 +305,18 @@
       "Elevar tubetes para mejorar drenaje y aireación de raíces",
       "Aplicación de Metalaxil en dosis 80 gr/240 L H₂O en sustrato como preventivo"
     ],
-    "species": ["E. globulus", "E. nitens", "E. camaldulensis"],
-    "tags": ["raíz", "amarillamiento", "zoosporas", "encharcamiento", "agua"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. camaldulensis"
+    ],
+    "tags": [
+      "raíz",
+      "amarillamiento",
+      "zoosporas",
+      "encharcamiento",
+      "agua"
+    ]
   },
   {
     "id": 8,
@@ -185,9 +326,17 @@
     "severity": "media",
     "phase": "Germinación / Post-emergencia",
     "emoji": "💧",
+    "photos": [
+      "/images/pythium.jpeg"
+    ],
     "photo": "/images/pythium.jpeg",
     "seasonText": "Mayor prevalencia en verano (nov–feb) cuando las temperaturas altas (25–35 °C) favorecen especialmente a P. aphanidermatum. P. debaryanum y P. ultimum pueden causar daños también en invierno en sustratos saturados.",
-    "peakMonths": [11, 12, 1, 2],
+    "peakMonths": [
+      11,
+      12,
+      1,
+      2
+    ],
     "shortDesc": "Destrucción de raíces en desarrollo y tombamiento de plántulas. Frecuente cuando el sustrato se mantiene saturado.",
     "symptoms": "Las raíces en etapa inicial de desarrollo son destruidas. Las raíces más desarrolladas se vuelven oscuras y con aspecto acuoso. Marchitamiento repentino aunque el suelo esté húmedo. Crecimiento retardado y muerte de plántulas en casos severos.",
     "conditions": "Sustrato muy húmedo o saturado, temperaturas altas (25–35 °C para P. aphanidermatum), semillas de baja germinación o plántulas debilitadas. Comunes en viveros con problemas de drenaje.",
@@ -199,8 +348,18 @@
       "Control biológico con Trichoderma spp.",
       "Evitar compactación del sustrato en los tubetes"
     ],
-    "species": ["E. globulus", "E. grandis", "E. nitens"],
-    "tags": ["raíz", "germinación", "saturación", "zoosporas", "control biológico"]
+    "species": [
+      "E. globulus",
+      "E. grandis",
+      "E. nitens"
+    ],
+    "tags": [
+      "raíz",
+      "germinación",
+      "saturación",
+      "zoosporas",
+      "control biológico"
+    ]
   },
   {
     "id": 9,
@@ -210,9 +369,14 @@
     "severity": "baja",
     "phase": "Plantas jóvenes",
     "emoji": "🦠",
+    "photos": [],
     "photo": null,
     "seasonText": "Más frecuente en primavera (sep–nov), asociada a períodos lluviosos, granizo y temperaturas suaves. Los eventos climáticos adversos que causan heridas mecánicas en las plantas favorecen la entrada de la bacteria.",
-    "peakMonths": [9, 10, 11],
+    "peakMonths": [
+      9,
+      10,
+      11
+    ],
     "shortDesc": "Manchas encharcadas en las hojas con halo amarillento que evolucionan hacia necrosis. Poco común, pero puede aparecer tras daños mecánicos.",
     "symptoms": "Manchas encharcadas de aspecto oleoso en las hojas, generalmente con halo amarillento alrededor. Con el tiempo las lesiones necrosan y se vuelven pardas. Pueden ocurrir cancros en tallos jóvenes tras períodos lluviosos. La enfermedad es menos severa que las enfermedades fúngicas.",
     "conditions": "Heridas mecánicas, granizo, insectos y temperaturas suaves con alta humedad. El exceso de nitrógeno favorece tejidos suculentos y más susceptibles. Las bacteriosis son poco comunes en viveros de eucalipto, pero pueden ocurrir tras condiciones climáticas adversas.",
@@ -224,8 +388,18 @@
       "Eliminar restos vegetales de plantas enfermas",
       "Higienización de herramientas con desinfectante"
     ],
-    "species": ["E. globulus", "E. nitens", "E. grandis"],
-    "tags": ["hoja", "halo amarillo", "necrosis", "cobre", "herida"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. grandis"
+    ],
+    "tags": [
+      "hoja",
+      "halo amarillo",
+      "necrosis",
+      "cobre",
+      "herida"
+    ]
   },
   {
     "id": 10,
@@ -235,9 +409,17 @@
     "severity": "alta",
     "phase": "Plantas en vivero y campo",
     "emoji": "🪲",
+    "photos": [],
     "photo": null,
     "seasonText": "La actividad del adulto y la oviposición son más intensas en primavera y verano (sep–feb), coincidiendo con la brotación del eucalipto. En invierno (jun–ago), el insecto persiste en estado adulto en el follaje o en la corteza de las plantas.",
-    "peakMonths": [9, 10, 11, 12, 1, 2],
+    "peakMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
     "shortDesc": "El adulto y las larvas consumen las hojas jóvenes, causando defoliación severa. Es la plaga forestal de mayor impacto económico en Chile.",
     "symptoms": "Los adultos realizan cortes semicirculares en los bordes de las hojas jóvenes (síntoma diagnóstico). Las larvas, de color amarillo-verdoso y aspecto mucilaginoso, raspan el parénquima foliar dejando las hojas con aspecto translúcido y posteriormente necrótico. La defoliación intensa reduce el crecimiento y puede matar plantas de vivero. Las ootecas (masas de huevos) son visibles en el haz de las hojas.",
     "conditions": "Temperaturas superiores a 10 °C favorecen la actividad del adulto. El insecto completa de 2 a 4 generaciones por año en Chile, dependiendo de la temperatura. Las plantas jóvenes en vivero son más susceptibles por la abundancia de tejido tierno.",
@@ -250,8 +432,20 @@
       "Evitar el ingreso de plantas infestadas al vivero",
       "Seleccionar especies/procedencias con mayor tolerancia (E. nitens es más tolerante que E. globulus)"
     ],
-    "species": ["E. globulus", "E. camaldulensis", "E. grandis", "E. nitens"],
-    "tags": ["defoliación", "hoja", "larva", "adulto", "control biológico", "cortes semicirculares"]
+    "species": [
+      "E. globulus",
+      "E. camaldulensis",
+      "E. grandis",
+      "E. nitens"
+    ],
+    "tags": [
+      "defoliación",
+      "hoja",
+      "larva",
+      "adulto",
+      "control biológico",
+      "cortes semicirculares"
+    ]
   },
   {
     "id": 11,
@@ -261,9 +455,15 @@
     "severity": "alta",
     "phase": "Toda la fase de vivero y campo",
     "emoji": "🐛",
+    "photos": [],
     "photo": null,
     "seasonText": "Se reproduce durante todo el año en climas favorables, pero las poblaciones alcanzan su pico máximo en verano (dic–mar), cuando las altas temperaturas aceleran el ciclo de vida. En invierno, las poblaciones disminuyen pero persisten en el vivero.",
-    "peakMonths": [12, 1, 2, 3],
+    "peakMonths": [
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Succionador de savia que provoca bronceado y necrosis foliar. De reciente introducción en Chile, con alta capacidad de diseminación.",
     "symptoms": "Las hojas afectadas presentan coloración bronceada-rojiza característica, que avanza hacia necrosis foliar y caída prematura de hojas. Plantas fuertemente infestadas presentan defoliación severa y reducción del crecimiento. En condiciones de alta infestación, pueden observarse manchas de excreciones (mielecilla) en el follaje. El insecto es muy pequeño (1–2 mm) y se ubica principalmente en el haz de las hojas.",
     "conditions": "Temperaturas cálidas (>18 °C) favorecen la reproducción. El insecto tiene ciclo de vida corto y alta tasa reproductiva, lo que permite que las poblaciones crezcan rápidamente en viveros con temperaturas favorables. La especie es polífaga dentro del género Eucalyptus.",
@@ -276,8 +476,21 @@
       "Cuarentena interna: aislar plantas infestadas para evitar diseminación en el vivero",
       "Monitoreo con trampas pegajosas amarillas"
     ],
-    "species": ["E. globulus", "E. nitens", "E. camaldulensis", "E. grandis", "E. dunnii"],
-    "tags": ["succionador", "bronceado", "necrosis", "mielecilla", "invasora", "hemíptero"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. camaldulensis",
+      "E. grandis",
+      "E. dunnii"
+    ],
+    "tags": [
+      "succionador",
+      "bronceado",
+      "necrosis",
+      "mielecilla",
+      "invasora",
+      "hemíptero"
+    ]
   },
   {
     "id": 12,
@@ -287,9 +500,16 @@
     "severity": "media",
     "phase": "Plantas jóvenes en vivero y primer año de campo",
     "emoji": "🐝",
+    "photos": [],
     "photo": null,
     "seasonText": "La oviposición y desarrollo larval ocurren principalmente en primavera y verano (oct–feb), cuando la planta produce brotes jóvenes que son el sitio preferido de oviposición. Las agallas permanecen visibles durante todo el año pero el daño se concentra en el crecimiento primaveral.",
-    "peakMonths": [10, 11, 12, 1, 2],
+    "peakMonths": [
+      10,
+      11,
+      12,
+      1,
+      2
+    ],
     "shortDesc": "Forma agallas en pecíolos, nervaduras y tallos de plantas jóvenes, distorsionando el crecimiento. Especie invasora de difícil control.",
     "symptoms": "Formación de agallas (tumores) de coloración rojiza a morada en los pecíolos, nervaduras centrales de las hojas y tallos tiernos. Las agallas contienen las larvas en desarrollo. La distorsión del tejido causa enrollamiento foliar, reducción del área foliar y deformación de los brotes apicales. En plantas de vivero, el ataque intenso puede causar muerte del ápice y reducción severa del crecimiento.",
     "conditions": "La especie prefiere plantas jóvenes con tejido tierno en activo crecimiento. Las temperaturas suaves a cálidas (18–28 °C) favorecen la oviposición. La presencia de la plaga en las regiones vecinas es el principal factor de riesgo para viveros sin historia de infestación.",
@@ -302,8 +522,21 @@
       "Control biológico: parasitoides del género Quadrastichus están siendo evaluados en la región",
       "Selección de especies con mayor tolerancia (algunas procedencias de E. camaldulensis son más tolerantes)"
     ],
-    "species": ["E. globulus", "E. camaldulensis", "E. grandis", "E. tereticornis"],
-    "tags": ["agalla", "tumor", "pecíolo", "nervadura", "invasora", "larva", "distorsión"]
+    "species": [
+      "E. globulus",
+      "E. camaldulensis",
+      "E. grandis",
+      "E. tereticornis"
+    ],
+    "tags": [
+      "agalla",
+      "tumor",
+      "pecíolo",
+      "nervadura",
+      "invasora",
+      "larva",
+      "distorsión"
+    ]
   },
   {
     "id": 13,
@@ -313,9 +546,20 @@
     "severity": "alta",
     "phase": "Plantas jóvenes y brotes",
     "emoji": "🟤",
+    "photos": [
+      "/images/colletotrichum.jpeg",
+      "/images/colletotrichum_2.jpeg"
+    ],
     "photo": "/images/colletotrichum.jpeg",
     "seasonText": "Mayor incidencia en períodos de alta humedad y temperaturas moderadas a cálidas (oct–mar). Los brotes de infección ocurren especialmente durante lluvias prolongadas o en viveros con alta densidad de plantas.",
-    "peakMonths": [10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Manchas oscuras en hojas y ramas jóvenes que coalescen en áreas necróticas. Puede causar cancros y muerte regresiva de brotes.",
     "symptoms": "Manchas foliares pequeñas y oscuras que se agrandan y coalescen causando grandes áreas necróticas. Lesiones hundidas y necróticas en tallos y ramas jóvenes que pueden llevar a muerte regresiva. Defoliación prematura de hojas afectadas. Formación de cancros en ramas y troncos jóvenes que pueden exudar goma. Muerte de brotes jóvenes especialmente bajo condiciones de alta humedad.",
     "conditions": "Alta humedad ambiental, temperaturas entre 20–28 °C, tejido joven y vigoroso. Los viveros con alta densidad de plantas y baja ventilación son especialmente susceptibles. Los períodos prolongados de mojado foliar favorecen la infección.",
@@ -328,8 +572,20 @@
       "Limpiar restos vegetales caídos en bandejas y pisos de invernadero",
       "Evitar períodos prolongados de mojado foliar (riego por goteo preferible)"
     ],
-    "species": ["E. globulus", "E. grandis", "E. nitens", "E. camaldulensis"],
-    "tags": ["mancha foliar", "cancro", "muerte regresiva", "necrosis", "defoliación", "brotes"]
+    "species": [
+      "E. globulus",
+      "E. grandis",
+      "E. nitens",
+      "E. camaldulensis"
+    ],
+    "tags": [
+      "mancha foliar",
+      "cancro",
+      "muerte regresiva",
+      "necrosis",
+      "defoliación",
+      "brotes"
+    ]
   },
   {
     "id": 14,
@@ -339,9 +595,20 @@
     "severity": "media",
     "phase": "Ramas, tallos y tejido joven",
     "emoji": "🍁",
+    "photos": [
+      "/images/phomopsis.jpeg",
+      "/images/phomopsis_2.jpeg"
+    ],
     "photo": "/images/phomopsis.jpeg",
     "seasonText": "Mayor actividad en períodos de alta humedad con temperaturas moderadas (abr–sep). El hongo prospera en condiciones de alta humedad y temperaturas moderadas, siendo más frecuente en otoño e invierno en viveros cerrados.",
-    "peakMonths": [4, 5, 6, 7, 8, 9],
+    "peakMonths": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
     "shortDesc": "Manchas marrones en hojas y tallos, con formación de cánceres en el tallo. Puede causar pudrición de frutos y defoliación prematura.",
     "symptoms": "Aparición de pequeñas manchas marrones o negras en hojas y tallos que se fusionan formando áreas necróticas más grandes. Formación de lesiones alargadas y hundidas (cánceres) en los tallos que pueden exudar resina o savia. Defoliación prematura de hojas severamente afectadas. Muerte de ramitas jóvenes en casos severos, debilitando la planta general.",
     "conditions": "Alta humedad relativa, temperaturas moderadas (15–25 °C), baja ventilación y períodos prolongados de mojado foliar. El exceso de riego y el hacinamiento de plantas favorecen el desarrollo de la enfermedad en viveros.",
@@ -354,8 +621,19 @@
       "Fungicidas: clorotalonil, tiabendazol y mancozeb como opciones de control",
       "Eliminar residuos vegetales: retirar y destruir hojas caídas y ramas muertas"
     ],
-    "species": ["E. globulus", "E. nitens", "E. grandis"],
-    "tags": ["cáncer", "tallo", "ramas", "manchas", "defoliación", "poda sanitaria"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. grandis"
+    ],
+    "tags": [
+      "cáncer",
+      "tallo",
+      "ramas",
+      "manchas",
+      "defoliación",
+      "poda sanitaria"
+    ]
   },
   {
     "id": 15,
@@ -365,9 +643,20 @@
     "severity": "alta",
     "phase": "Vivero y plantas jóvenes (ápices)",
     "emoji": "🦗",
+    "photos": [
+      "/images/psilido.jpeg"
+    ],
     "photo": "/images/psilido.jpeg",
     "seasonText": "Presente durante todo el año en viveros con temperatura controlada. Las poblaciones se incrementan en primavera y verano (sep–mar) cuando hay mayor producción de brotes tiernos. En invierno las poblaciones son menores pero persisten.",
-    "peakMonths": [9, 10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Succiona la savia de brotes tiernos causando enrollamiento de hojas y presencia de melaza. Afecta principalmente los ápices de plantas juveniles.",
     "symptoms": "Enrollamiento y deformación de hojas jóvenes debido a la alimentación de las ninfas. Formación de pequeñas agallas en hojas y brotes en algunos casos. Presencia de melaza pegajosa en hojas y brotes que favorece la aparición de hongos de hollín (fumagina). Defoliación y reducción del crecimiento en infestaciones intensas. Amarillamiento y necrosis de hojas con manchas cloróticas por succión de savia.",
     "conditions": "Temperatura controlada en viveros (>15 °C) favorece su desarrollo continuo. El insecto prefiere brotes tiernos y tejido joven en activo crecimiento, siendo más abundante cuando hay alta producción de material vegetativo en canaletones.",
@@ -381,8 +670,22 @@
       "Fomentar fauna benéfica (chinitas y crisopas) que se alimentan de ninfas y adultos",
       "Rotación de insecticidas para prevenir resistencia"
     ],
-    "species": ["E. globulus", "E. nitens", "E. grandis", "E. dunnii", "E. camaldulensis"],
-    "tags": ["savia", "brotes", "melaza", "fumagina", "enrollamiento", "ápice", "canaletones"]
+    "species": [
+      "E. globulus",
+      "E. nitens",
+      "E. grandis",
+      "E. dunnii",
+      "E. camaldulensis"
+    ],
+    "tags": [
+      "savia",
+      "brotes",
+      "melaza",
+      "fumagina",
+      "enrollamiento",
+      "ápice",
+      "canaletones"
+    ]
   },
   {
     "id": 16,
@@ -392,9 +695,20 @@
     "severity": "media",
     "phase": "Toda la fase de vivero",
     "emoji": "🤍",
+    "photos": [
+      "/images/chanchito.jpeg"
+    ],
     "photo": "/images/chanchito.jpeg",
     "seasonText": "Se desarrolla durante todo el año en ambientes cálidos y húmedos de invernadero. Las poblaciones son más altas en primavera y verano (sep–mar) cuando las condiciones de temperatura son más favorables para su reproducción.",
-    "peakMonths": [9, 10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Insectos blancos algodonosos que succionan savia en tallos, hojas y raíces. Producen melaza que favorece la fumagina y debilitan la planta.",
     "symptoms": "Pequeños insectos blancos y algodonosos visibles en tallos, hojas y raíces de las plantas. Excreción de melaza pegajosa que favorece el crecimiento de hongos de hollín (fumagina) afectando la fotosíntesis. Amarillamiento y caída prematura de hojas. Debilitamiento general con crecimiento deficiente por pérdida de nutrientes vía savia. Distorsión de brotes y hojas en las áreas donde las cochinillas se alimentan.",
     "conditions": "Ambientes cálidos y húmedos. Las cochinillas pueden ser introducidas en viveros a través de plantas infestadas, herramientas contaminadas o por el viento. La alta densidad de plantas en canaletones y la falta de ventilación favorecen su proliferación.",
@@ -408,8 +722,20 @@
       "Inspeccionar plantas nuevas antes de introducirlas al vivero",
       "Desinfectar herramientas en caso de presencia de este insecto"
     ],
-    "species": ["E. globulus", "E. grandis", "E. nitens", "E. camaldulensis"],
-    "tags": ["cochinilla", "algodonoso", "melaza", "fumagina", "savia", "raíces"]
+    "species": [
+      "E. globulus",
+      "E. grandis",
+      "E. nitens",
+      "E. camaldulensis"
+    ],
+    "tags": [
+      "cochinilla",
+      "algodonoso",
+      "melaza",
+      "fumagina",
+      "savia",
+      "raíces"
+    ]
   },
   {
     "id": 17,
@@ -419,9 +745,20 @@
     "severity": "baja",
     "phase": "Vivero y campo",
     "emoji": "🐜",
+    "photos": [
+      "/images/hormiga.jpeg"
+    ],
     "photo": "/images/hormiga.jpeg",
     "seasonText": "Las hormigas están presentes durante todo el año, pero su actividad aumenta significativamente en primavera y verano (sep–mar) cuando las temperaturas son más altas y la actividad de cochinillas y pulgones (fuente de melaza) también es mayor.",
-    "peakMonths": [9, 10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      9,
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Causan daño directo a brotes tiernos y protegen plagas como pulgones y cochinillas, facilitando su proliferación en el vivero.",
     "symptoms": "Presencia visible de hormigas moviéndose en hojas, tallos y troncos. Daño a hojas y brotes tiernos por masticado que puede llevar a deformaciones y crecimiento reducido. Presencia de melaza y hongos de hollín asociados a cochinillas y pulgones que las hormigas protegen. Nidos visibles en el suelo alrededor de los canaletones o en la base de las plantas.",
     "conditions": "Las hormigas son atraídas al vivero principalmente por la melaza excretada por cochinillas y pulgones. También buscan refugio y alimento en la base de las plantas y en sustratos con materia orgánica. Las altas temperaturas favorecen su actividad.",
@@ -435,8 +772,20 @@
       "Nematodos entomopatógenos en el suelo para atacar larvas en nidos",
       "Monitoreo regular e inspección de las plantas para detectar su presencia"
     ],
-    "species": ["E. globulus", "E. grandis", "E. nitens", "E. camaldulensis"],
-    "tags": ["masticado", "brotes", "melaza", "cochinillas", "pulgones", "nido"]
+    "species": [
+      "E. globulus",
+      "E. grandis",
+      "E. nitens",
+      "E. camaldulensis"
+    ],
+    "tags": [
+      "masticado",
+      "brotes",
+      "melaza",
+      "cochinillas",
+      "pulgones",
+      "nido"
+    ]
   },
   {
     "id": 18,
@@ -446,9 +795,19 @@
     "severity": "baja",
     "phase": "Vivero — suelo y raíces",
     "emoji": "🔬",
+    "photos": [
+      "/images/colembolos.jpeg",
+      "/images/colembolos_2.jpeg"
+    ],
     "photo": "/images/colembolos.jpeg",
     "seasonText": "Los colémbolos están presentes durante todo el año en sustratos húmedos. Su densidad poblacional aumenta cuando hay exceso de riego y acumulación de materia orgánica, lo que puede ocurrir en cualquier época del año en viveros de canaletones.",
-    "peakMonths": [4, 5, 6, 7, 8],
+    "peakMonths": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
     "shortDesc": "Pequeños insectos del sustrato que en altas densidades dañan raíces finas. Normalmente beneficiosos pero se convierten en plaga en condiciones de exceso de humedad.",
     "symptoms": "Daño a las raíces finas en casos de alta densidad poblacional. Marchitamiento de plantas por reducción en la absorción de agua y nutrientes. Reducción del crecimiento y signos generales de debilidad. Presencia visible de pequeños insectos blancos o grises en el sustrato y alrededor de las raíces al inspeccionar los canaletones.",
     "conditions": "Los colémbolos prosperan en ambientes húmedos con alta cantidad de materia orgánica en descomposición. El exceso de riego crea condiciones de alta humedad que favorecen el crecimiento de sus poblaciones. La acumulación de raíces muertas y restos vegetales proporciona ambiente ideal.",
@@ -462,8 +821,19 @@
       "Insecticidas específicos con piretroides o sistémicos en casos severos",
       "Monitoreo regular inspeccionando el sustrato y raíces de las plantas"
     ],
-    "species": ["E. globulus", "E. grandis", "E. nitens"],
-    "tags": ["sustrato", "raíces", "humedad", "suelo", "control biológico", "canaletones"]
+    "species": [
+      "E. globulus",
+      "E. grandis",
+      "E. nitens"
+    ],
+    "tags": [
+      "sustrato",
+      "raíces",
+      "humedad",
+      "suelo",
+      "control biológico",
+      "canaletones"
+    ]
   },
   {
     "id": 19,
@@ -473,9 +843,19 @@
     "severity": "media",
     "phase": "Plantas jóvenes — tallos y raíces",
     "emoji": "🐛",
+    "photos": [
+      "/images/gusanos_cortadores.jpeg"
+    ],
     "photo": "/images/gusanos_cortadores.jpeg",
     "seasonText": "Las larvas están activas principalmente en primavera y verano (oct–mar) cuando las temperaturas altas favorecen su desarrollo. En plantas pequeñas del vivero, el daño es más frecuente en épocas de mayor temperatura y humedad.",
-    "peakMonths": [10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Larvas que se alimentan del interior del tronco y ramas, debilitando la estructura del árbol. Cortan tallos de plantas pequeñas causando su muerte.",
     "symptoms": "Decoloración y marchitez de hojas que se vuelven amarillas prematuramente. Agujeros producidos por las larvas en hojas cuando las comen. Corte de tallos en plantas pequeñas causando su muerte. Debilidad general, reducción del crecimiento y falta de vigor. En plantas más grandes, galería interna visible al cortar el tallo.",
     "conditions": "Las polillas de la familia Cossidae prefieren plantas debilitadas o con heridas. Las larvas se alimentan del interior del tronco y ramas. Las plantas jóvenes en vivero son especialmente susceptibles al corte del tallo. Las temperaturas altas favorecen el ciclo de vida de estas polillas.",
@@ -487,8 +867,20 @@
       "Control químico con insecticidas específicos en casos severos según recomendación técnica",
       "Revisar plantas regularmente buscando orificios de entrada de larvas en tallos"
     ],
-    "species": ["E. globulus", "E. grandis", "E. camaldulensis", "E. nitens"],
-    "tags": ["larva", "tallo", "corte", "galería", "polilla", "debilitamiento"]
+    "species": [
+      "E. globulus",
+      "E. grandis",
+      "E. camaldulensis",
+      "E. nitens"
+    ],
+    "tags": [
+      "larva",
+      "tallo",
+      "corte",
+      "galería",
+      "polilla",
+      "debilitamiento"
+    ]
   },
   {
     "id": 20,
@@ -498,9 +890,19 @@
     "severity": "media",
     "phase": "Toda la fase de vivero",
     "emoji": "🟢",
+    "photos": [
+      "/images/pulgones.jpeg"
+    ],
     "photo": "/images/pulgones.jpeg",
     "seasonText": "Proliferan principalmente en climas cálidos y secos (oct–mar en el hemisferio sur). Las poblaciones crecen rápidamente en primavera cuando hay abundante tejido joven disponible. Pueden migrar desde plantas vecinas en épocas cálidas.",
-    "peakMonths": [10, 11, 12, 1, 2, 3],
+    "peakMonths": [
+      10,
+      11,
+      12,
+      1,
+      2,
+      3
+    ],
     "shortDesc": "Colonias de insectos pequeños que succionan savia de hojas y brotes tiernos, causando deformación foliar y secreción de mielada que atrae fumagina.",
     "symptoms": "Deformación y enrollamiento de hojas jóvenes debido a la succión de savia. Secreción pegajosa y brillante (honeydew/mielada) en hojas y ramas que atrae hongos negros de hollín (fumagina). Colonias visibles de pulgones en hojas, brotes y ramas más tiernas. Debilitamiento de las plantas con pérdida de vigor y crecimiento reducido. En casos graves, muerte de ramas o de la planta completa.",
     "conditions": "Climas cálidos y secos favorecen la proliferación. Pueden migrar desde plantas vecinas. Algunas especies de pulgones tienen preferencia por ciertos tipos de eucaliptos. La alta densidad de plantas facilita la rápida colonización.",
@@ -514,7 +916,19 @@
       "Monitoreo constante para detectar y tratar infestaciones tempranamente",
       "Evitar exceso de nitrógeno que estimula tejido suculento y suceptible"
     ],
-    "species": ["E. globulus", "E. grandis", "E. nitens", "E. camaldulensis"],
-    "tags": ["colonia", "mielada", "fumagina", "brotes", "deformación", "control biológico"]
+    "species": [
+      "E. globulus",
+      "E. grandis",
+      "E. nitens",
+      "E. camaldulensis"
+    ],
+    "tags": [
+      "colonia",
+      "mielada",
+      "fumagina",
+      "brotes",
+      "deformación",
+      "control biológico"
+    ]
   }
 ]

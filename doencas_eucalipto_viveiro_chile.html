@@ -1131,6 +1131,26 @@
   </div>
 </div>
 
+<!-- ──── COMPARE BAR ──── -->
+<div class="compare-bar" id="compareBar">
+  <span class="compare-bar-info">Comparando <strong id="compareCnt">0</strong> enfermedad(es)</span>
+  <div style="display:flex;gap:8px">
+    <button class="btn-compare-clear" onclick="clearCompare()">Limpiar</button>
+    <button class="btn-compare-now" onclick="openCompare()">Comparar ahora →</button>
+  </div>
+</div>
+
+<!-- ──── COMPARE OVERLAY ──── -->
+<div class="cmp-overlay" id="cmpOverlay">
+  <div class="cmp-box">
+    <div class="cmp-header">
+      <h2>Comparación de enfermedades</h2>
+      <button class="cmp-close" onclick="closeCompare()">×</button>
+    </div>
+    <div id="cmpGrid" class="cmp-grid"></div>
+  </div>
+</div>
+
 
 <script>
 // ──── ESTADO GLOBAL ────
@@ -1576,7 +1596,64 @@ function toggleCompare(id, event) {
   event && event.stopPropagation();
   const idx = compareIds.indexOf(id);
   if (idx === -1) compareIds.push(id); else compareIds.splice(idx, 1);
+  updateCompareBar();
   applyFilters();
+}
+
+
+// ──── COMPARE BAR ────
+function updateCompareBar() {
+  const bar = document.getElementById('compareBar');
+  const cnt = document.getElementById('compareCnt');
+  if (!bar) return;
+  cnt.textContent = compareIds.length;
+  bar.classList.toggle('visible', compareIds.length > 0);
+}
+
+function clearCompare() {
+  compareIds = [];
+  updateCompareBar();
+  applyFilters();
+}
+
+// ──── OPEN COMPARE ────
+function openCompare() {
+  if (compareIds.length < 2) {
+    alert('Seleccione al menos 2 enfermedades para comparar (máximo 4).');
+    return;
+  }
+  const items = compareIds.slice(0,4).map(id => diseases.find(d => d.id === id)).filter(Boolean);
+  const colClasses = ['col-a','col-b','col-c','col-d'];
+  const MONTHS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const rows = [
+    { label: 'Tipo',          key: d => d.type ? d.type.charAt(0).toUpperCase()+d.type.slice(1) : '—' },
+    { label: 'Agente causal', key: d => d.agent || '—' },
+    { label: 'Severidad',     key: d => ({alta:'🔴 Alta', media:'🟡 Media', baja:'🟢 Baja'}[d.severity] || d.severity || '—') },
+    { label: 'Fase',          key: d => d.phase || '—' },
+    { label: 'Síntomas',      key: d => d.symptoms || '—' },
+    { label: 'Control',       key: d => (d.control||[]).join(' • ') || '—' },
+    { label: 'Meses pico',    key: d => (d.peakMonths||[]).map(m=>MONTHS[m-1]).join(', ') || '—' },
+  ];
+  const grid = document.getElementById('cmpGrid');
+  grid.style.gridTemplateColumns = `140px ${items.map(()=>'1fr').join(' ')}`;
+  let html = '<div class="cmp-cell label"></div>';
+  items.forEach((d,i) => {
+    html += `<div class="cmp-cell ${colClasses[i]} cmp-name">${d.name}</div>`;
+  });
+  rows.forEach(row => {
+    html += `<div class="cmp-cell label">${row.label}</div>`;
+    items.forEach((d,i) => {
+      html += `<div class="cmp-cell ${colClasses[i]}">${row.key(d)}</div>`;
+    });
+  });
+  grid.innerHTML = html;
+  document.getElementById('cmpOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCompare() {
+  document.getElementById('cmpOverlay').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // ──── DELETE CONFIRM ────
