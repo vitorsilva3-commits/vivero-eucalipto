@@ -100,8 +100,15 @@
     "severity": "alta",
     "phase": "Plantas y mini-estacas",
     "emoji": "🍂",
-    "photos": [],
-    "photo": null,
+    "photos": [
+      "/images/cylindrocladium.jpeg",
+      "/images/cylindrocladium_2.jpeg",
+      "/images/cylindrocladium_3.jpeg",
+      "/images/cylindrocladium_4.jpeg",
+      "/images/cylindrocladium_5.jpeg",
+      "/images/cylindrocladium_6.jpeg"
+    ],
+    "photo": "/images/cylindrocladium.jpeg",
     "seasonText": "Mayor incidencia en primavera y verano (oct–mar), cuando las temperaturas cálidas (22–28 °C) combinadas con la alta humedad de los sistemas de nebulización favorecen la esporulación y dispersión del patógeno.",
     "peakMonths": [
       10,
