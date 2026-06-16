@@ -794,21 +794,28 @@
   }
   body.dark-mode .form-input, body.dark-mode .form-select,
   body.dark-mode .form-textarea, body.dark-mode .btn-add-photo,
-  body.dark-mode .sort-select, body.dark-mode .mf-chip { background: #1c2d1e; color: var(--text); }
+  body.dark-mode .mf-chip { background: #1c2d1e; color: var(--text); }
   body.dark-mode .sort-select {
+    background-color: #1c2d1e;
+    color: var(--text);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238aaa90' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
     color-scheme: dark;
   }
   body.dark-mode .sort-select option {
-    background: #1c2d1e;
+    background-color: #1c2d1e;
     color: #e8f0ea;
+  }
+  .header-controls {
+    position: absolute; top: 1.2rem; right: 1.5rem; z-index: 2;
+    display: flex; align-items: center; gap: 8px;
   }
   .dark-toggle {
     background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
     color: rgba(245,240,232,0.7); padding: 5px 12px; border-radius: 99px;
     cursor: pointer; font-size: 12px; font-family: 'DM Sans', sans-serif;
-    transition: all 0.15s; position: absolute; top: 1.2rem; right: 1.5rem; z-index: 2;
-    display: flex; align-items: center; gap: 5px;
+    transition: all 0.15s; display: flex; align-items: center; gap: 5px;
   }
   .dark-toggle:hover { background: rgba(255,255,255,0.15); color: white; }
 
@@ -827,7 +834,6 @@
   }
   /* ── AUTH HEADER ── */
   .header-auth {
-    position: absolute; top: 1.2rem; right: 4.5rem; z-index: 2;
     display: flex; align-items: center; gap: 8px;
   }
   .auth-btn {
@@ -863,12 +869,14 @@
 
 <header>
   <div class="header-inner">
-    <button class="dark-toggle" onclick="toggleDarkMode()" id="darkToggle" title="Alternar modo oscuro">🌙 <span>Modo oscuro</span></button>
-    <div class="header-auth" id="headerAuth">
-      <a class="auth-btn login-link" href="/login" id="authLoginLink">Iniciar sesión →</a>
-      <div class="auth-user hidden" id="authUser">
-        <span id="authUserName"></span>
-        <button class="auth-logout" onclick="doLogout()">Salir</button>
+    <div class="header-controls">
+      <button class="dark-toggle" onclick="toggleDarkMode()" id="darkToggle" title="Alternar modo oscuro">🌙 <span>Modo oscuro</span></button>
+      <div class="header-auth" id="headerAuth">
+        <a class="auth-btn login-link" href="/login" id="authLoginLink">Iniciar sesión →</a>
+        <div class="auth-user hidden" id="authUser">
+          <span id="authUserName"></span>
+          <button class="auth-logout" onclick="doLogout()">Salir</button>
+        </div>
       </div>
     </div>
     <div class="header-tag">Guía Fitosanitaria — Chile</div>
@@ -1733,6 +1741,18 @@ function downloadReport() {
   document.body.removeChild(a);
   URL.revokeObjectURL(a.href);
 }
+
+// ──── TAB SWITCHING ────
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById('tab-' + tab);
+    if (panel) panel.classList.add('active');
+  });
+});
 
 // ──── SEVERITY FILTER BUTTONS ────
 document.querySelectorAll('.sev-btn').forEach(btn => {
