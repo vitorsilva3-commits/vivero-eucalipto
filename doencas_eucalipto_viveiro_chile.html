@@ -832,37 +832,7 @@
     .tab-panel { display: block !important; }
     #tab-vision, #tab-ciclo { display: none !important; }
   }
-  /* ── AUTH HEADER ── */
-  .header-auth {
-    display: flex; align-items: center; gap: 8px;
-  }
-  .auth-btn {
-    padding: 5px 12px; border-radius: 99px; font-size: 12px;
-    font-family: 'DM Sans', sans-serif; font-weight: 500;
-    cursor: pointer; transition: all 0.15s; text-decoration: none;
-    display: flex; align-items: center; gap: 5px;
-  }
-  .login-link {
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(245,240,232,0.8);
-  }
-  .login-link:hover { background: rgba(255,255,255,0.18); color: white; }
-  .auth-user {
-    display: flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-    padding: 4px 12px; border-radius: 99px;
-  }
-  #authUserName {
-    font-size: 12px; color: rgba(245,240,232,0.85); font-weight: 500;
-  }
-  .auth-logout {
-    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
-    color: rgba(245,240,232,0.7); padding: 2px 8px; border-radius: 99px;
-    font-size: 11px; font-family: 'DM Sans', sans-serif; cursor: pointer;
-    transition: all 0.15s;
-  }
-  .auth-logout:hover { background: rgba(239,68,68,0.4); color: white; }
-  .hidden { display: none !important; }
+
 </style>
 </head>
 <body>
@@ -871,13 +841,6 @@
   <div class="header-inner">
     <div class="header-controls">
       <button class="dark-toggle" onclick="toggleDarkMode()" id="darkToggle" title="Alternar modo oscuro">🌙 <span>Modo oscuro</span></button>
-      <div class="header-auth" id="headerAuth">
-        <a class="auth-btn login-link" href="/login" id="authLoginLink">Iniciar sesión →</a>
-        <div class="auth-user hidden" id="authUser">
-          <span id="authUserName"></span>
-          <button class="auth-logout" onclick="doLogout()">Salir</button>
-        </div>
-      </div>
     </div>
     <div class="header-tag">Guía Fitosanitaria — Chile</div>
     <h1>Patologías del <em>Eucalyptus</em><br>en Vivero</h1>
@@ -915,7 +878,7 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span>Informe</span>
         </button>
-        <button class="btn-add-disease" id="btnAddDisease" onclick="openFormModal(null)" style="display:none">
+        <button class="btn-add-disease" onclick="openFormModal(null)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Nueva enfermedad
         </button>
@@ -1032,7 +995,7 @@
 </main>
 
 <!-- FAB mobile -->
-<button class="fab" id="fabAdd" onclick="openFormModal(null)" title="Agregar enfermedad" style="display:none">+</button>
+<button class="fab" onclick="openFormModal(null)" title="Agregar enfermedad">+</button>
 
 <!-- ──── VIEW MODAL ──── -->
 <div class="modal-overlay" id="modalOverlay">
@@ -1174,7 +1137,6 @@
 let diseases = [];
 let compareIds = [];
 let pendingDeleteId = null;
-let currentUser = null;
 
 // ──── HELPERS DE TEMPORADA ────
 const MONTH_NAMES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -1212,7 +1174,6 @@ function getSelectedMonths() {
 
 // ──── INICIALIZAÇÃO ASSÍNCRONA ────
 async function init() {
-  await checkAuth();
   try {
     const res = await fetch('/api/doencas');
     if (!res.ok) throw new Error('Error al cargar');
@@ -1271,7 +1232,7 @@ function renderCards(list) {
           <span class="card-severity-label ${sevLabelClass(d.severity)}">${severityLabel(d.severity)}</span>
         </div>
       </div>
-      ${currentUser ? `<div class="card-actions">
+      <div class="card-actions">
         <button class="card-action-btn edit" onclick="openFormModal(${d.id})">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
           Editar
@@ -1280,7 +1241,7 @@ function renderCards(list) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
           Eliminar
         </button>
-      </div>` : ''}
+      </div>
     </div>`;
   }).join('');
 }
@@ -1447,10 +1408,10 @@ function openModal(id) {
       ${buildSeasonCalendar(d.peakMonths)}
       ` : ''}
 
-      ${currentUser ? `<button class="modal-edit-btn" onclick="closeModal(); openFormModal(${d.id})">
+      <button class="modal-edit-btn" onclick="closeModal(); openFormModal(${d.id})">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Editar esta enfermedad
-      </button>` : ''}
+      </button>
     </div>
   `;
   document.getElementById('modalOverlay').classList.add('open');
@@ -1645,41 +1606,6 @@ async function confirmDelete() {
   } catch(e) {
     alert('Error al eliminar. Verifique la conexión.');
   }
-}
-
-// ──── AUTH ────
-async function checkAuth() {
-  try {
-    const res = await fetch('/api/me');
-    const data = await res.json();
-    currentUser = data.autenticado ? data : null;
-    updateAuthUI();
-  } catch(e) { currentUser = null; updateAuthUI(); }
-}
-function updateAuthUI() {
-  const loginLink = document.getElementById('authLoginLink');
-  const userDiv = document.getElementById('authUser');
-  const nameSpan = document.getElementById('authUserName');
-  const btnAdd = document.getElementById('btnAddDisease');
-  const fab = document.getElementById('fabAdd');
-  if (currentUser) {
-    loginLink && loginLink.classList.add('hidden');
-    userDiv && userDiv.classList.remove('hidden');
-    if (nameSpan) nameSpan.textContent = '👤 ' + currentUser.nome;
-    btnAdd && (btnAdd.style.display = '');
-    fab && (fab.style.display = '');
-  } else {
-    loginLink && loginLink.classList.remove('hidden');
-    userDiv && userDiv.classList.add('hidden');
-    btnAdd && (btnAdd.style.display = 'none');
-    fab && (fab.style.display = 'none');
-  }
-  applyFilters(); // re-render cards with/without action buttons
-}
-async function doLogout() {
-  await fetch('/api/logout', { method: 'POST' });
-  currentUser = null;
-  updateAuthUI();
 }
 
 // ──── DOWNLOAD REPORT ────
