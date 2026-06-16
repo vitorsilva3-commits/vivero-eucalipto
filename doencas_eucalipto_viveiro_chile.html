@@ -797,6 +797,11 @@
   body.dark-mode .sort-select, body.dark-mode .mf-chip { background: #1c2d1e; color: var(--text); }
   body.dark-mode .sort-select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238aaa90' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    color-scheme: dark;
+  }
+  body.dark-mode .sort-select option {
+    background: #1c2d1e;
+    color: #e8f0ea;
   }
   .dark-toggle {
     background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
@@ -820,6 +825,38 @@
     .tab-panel { display: block !important; }
     #tab-vision, #tab-ciclo { display: none !important; }
   }
+  /* ── AUTH HEADER ── */
+  .header-auth {
+    position: absolute; top: 1.2rem; right: 4.5rem; z-index: 2;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .auth-btn {
+    padding: 5px 12px; border-radius: 99px; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    cursor: pointer; transition: all 0.15s; text-decoration: none;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .login-link {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(245,240,232,0.8);
+  }
+  .login-link:hover { background: rgba(255,255,255,0.18); color: white; }
+  .auth-user {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    padding: 4px 12px; border-radius: 99px;
+  }
+  #authUserName {
+    font-size: 12px; color: rgba(245,240,232,0.85); font-weight: 500;
+  }
+  .auth-logout {
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(245,240,232,0.7); padding: 2px 8px; border-radius: 99px;
+    font-size: 11px; font-family: 'DM Sans', sans-serif; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .auth-logout:hover { background: rgba(239,68,68,0.4); color: white; }
+  .hidden { display: none !important; }
 </style>
 </head>
 <body>
@@ -827,6 +864,13 @@
 <header>
   <div class="header-inner">
     <button class="dark-toggle" onclick="toggleDarkMode()" id="darkToggle" title="Alternar modo oscuro">🌙 <span>Modo oscuro</span></button>
+    <div class="header-auth" id="headerAuth">
+      <a class="auth-btn login-link" href="/login" id="authLoginLink">Iniciar sesión →</a>
+      <div class="auth-user hidden" id="authUser">
+        <span id="authUserName"></span>
+        <button class="auth-logout" onclick="doLogout()">Salir</button>
+      </div>
+    </div>
     <div class="header-tag">Guía Fitosanitaria — Chile</div>
     <h1>Patologías del <em>Eucalyptus</em><br>en Vivero</h1>
     <p>Identificación y manejo de hongos, oomicetos, bacterias e insectos que afectan plantas de eucalipto en condiciones de vivero en Chile.</p>
@@ -859,11 +903,11 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           <span>Imprimir</span>
         </button>
-        <a class="btn-download" href="/api/doencas" download="backup-enfermidades.json" title="Descargar copia de seguridad">
+        <button class="btn-download" onclick="downloadReport()" title="Descargar informe HTML">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span>Backup</span>
-        </a>
-        <button class="btn-add-disease" onclick="openFormModal(null)">
+          <span>Informe</span>
+        </button>
+        <button class="btn-add-disease" id="btnAddDisease" onclick="openFormModal(null)" style="display:none">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           Nueva enfermedad
         </button>
@@ -980,7 +1024,7 @@
 </main>
 
 <!-- FAB mobile -->
-<button class="fab" onclick="openFormModal(null)" title="Agregar enfermedad">+</button>
+<button class="fab" id="fabAdd" onclick="openFormModal(null)" title="Agregar enfermedad" style="display:none">+</button>
 
 <!-- ──── VIEW MODAL ──── -->
 <div class="modal-overlay" id="modalOverlay">
@@ -1122,6 +1166,7 @@
 let diseases = [];
 let compareIds = [];
 let pendingDeleteId = null;
+let currentUser = null;
 
 // ──── HELPERS DE TEMPORADA ────
 const MONTH_NAMES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -1159,6 +1204,7 @@ function getSelectedMonths() {
 
 // ──── INICIALIZAÇÃO ASSÍNCRONA ────
 async function init() {
+  await checkAuth();
   try {
     const res = await fetch('/api/doencas');
     if (!res.ok) throw new Error('Error al cargar');
@@ -1217,7 +1263,7 @@ function renderCards(list) {
           <span class="card-severity-label ${sevLabelClass(d.severity)}">${severityLabel(d.severity)}</span>
         </div>
       </div>
-      <div class="card-actions">
+      ${currentUser ? `<div class="card-actions">
         <button class="card-action-btn edit" onclick="openFormModal(${d.id})">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
           Editar
@@ -1226,7 +1272,7 @@ function renderCards(list) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
           Eliminar
         </button>
-      </div>
+      </div>` : ''}
     </div>`;
   }).join('');
 }
@@ -1393,10 +1439,10 @@ function openModal(id) {
       ${buildSeasonCalendar(d.peakMonths)}
       ` : ''}
 
-      <button class="modal-edit-btn" onclick="closeModal(); openFormModal(${d.id})">
+      ${currentUser ? `<button class="modal-edit-btn" onclick="closeModal(); openFormModal(${d.id})">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Editar esta enfermedad
-      </button>
+      </button>` : ''}
     </div>
   `;
   document.getElementById('modalOverlay').classList.add('open');
@@ -1591,6 +1637,101 @@ async function confirmDelete() {
   } catch(e) {
     alert('Error al eliminar. Verifique la conexión.');
   }
+}
+
+// ──── AUTH ────
+async function checkAuth() {
+  try {
+    const res = await fetch('/api/me');
+    const data = await res.json();
+    currentUser = data.autenticado ? data : null;
+    updateAuthUI();
+  } catch(e) { currentUser = null; updateAuthUI(); }
+}
+function updateAuthUI() {
+  const loginLink = document.getElementById('authLoginLink');
+  const userDiv = document.getElementById('authUser');
+  const nameSpan = document.getElementById('authUserName');
+  const btnAdd = document.getElementById('btnAddDisease');
+  const fab = document.getElementById('fabAdd');
+  if (currentUser) {
+    loginLink && loginLink.classList.add('hidden');
+    userDiv && userDiv.classList.remove('hidden');
+    if (nameSpan) nameSpan.textContent = '👤 ' + currentUser.nome;
+    btnAdd && (btnAdd.style.display = '');
+    fab && (fab.style.display = '');
+  } else {
+    loginLink && loginLink.classList.remove('hidden');
+    userDiv && userDiv.classList.add('hidden');
+    btnAdd && (btnAdd.style.display = 'none');
+    fab && (fab.style.display = 'none');
+  }
+  applyFilters(); // re-render cards with/without action buttons
+}
+async function doLogout() {
+  await fetch('/api/logout', { method: 'POST' });
+  currentUser = null;
+  updateAuthUI();
+}
+
+// ──── DOWNLOAD REPORT ────
+function downloadReport() {
+  const sorted = [...diseases].sort((a,b) => a.name.localeCompare(b.name));
+  const now = new Date().toLocaleDateString('es-CL', { year:'numeric', month:'long', day:'numeric' });
+  const rows = sorted.map(d => {
+    const ctrl = (d.control || []).join(' • ') || '—';
+    const sevMap = {alta:'Alta 🔴', media:'Media 🟡', baja:'Baja 🟢'};
+    const sev = sevMap[d.severity] || d.severity || '—';
+    const type = d.type ? d.type.charAt(0).toUpperCase() + d.type.slice(1) : '—';
+    const phase = d.phase || '—';
+    const agent = d.agent || '—';
+    const symptoms = d.symptoms || d.shortDesc || '—';
+    return `<tr>
+      <td style="font-weight:600;color:#1a3a2a">${d.emoji||''} ${d.name}</td>
+      <td>${type}</td>
+      <td>${agent}</td>
+      <td>${sev}</td>
+      <td>${phase}</td>
+      <td>${symptoms}</td>
+      <td>${ctrl}</td>
+    </tr>`;
+  }).join('');
+  const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Informe — Patologías Eucalipto</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 2cm; color: #1a1a14; font-size: 11px; }
+  h1 { color: #1a3a2a; font-size: 1.4rem; margin-bottom: 0.3rem; }
+  .meta { color: #666; font-size: 10px; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: #1a3a2a; color: white; padding: 8px 6px; text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
+  td { padding: 6px 6px; border-bottom: 1px solid #e5e5e5; vertical-align: top; line-height: 1.45; }
+  tr:nth-child(even) td { background: #f9f9f4; }
+  @media print { body { margin: 1cm; } }
+</style>
+</head>
+<body>
+<h1>🌿 Patologías del Eucalipto en Vivero</h1>
+<p class="meta">Informe generado: ${now} · Total: ${sorted.length} patógenos registrados</p>
+<table>
+  <thead><tr>
+    <th>Enfermedad</th><th>Tipo</th><th>Agente causal</th>
+    <th>Severidad</th><th>Fase</th><th>Síntomas</th><th>Control</th>
+  </tr></thead>
+  <tbody>${rows}</tbody>
+</table>
+</body>
+</html>`;
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'informe-patologias-eucalipto-' + new Date().toISOString().slice(0,10) + '.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
 }
 
 // ──── SEVERITY FILTER BUTTONS ────

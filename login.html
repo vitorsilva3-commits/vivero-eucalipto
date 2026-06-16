@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Acceso — Vivero Eucalipto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green-dark:#1a3a2a;
+  --green-mid:#2d6a4f;
+  --green-light:#52b788;
+  --green-xlight:#d8f3dc;
+  --bg:#f4f9f5;
+  --surface:#ffffff;
+  --border:#d0e4d8;
+  --text:#1a2b1e;
+  --text-muted:#5a7a64;
+  --error:#ef4444;
+  --shadow:0 4px 24px rgba(26,58,42,.10);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem}
+.wrap{width:100%;max-width:420px}
+.logo{text-align:center;margin-bottom:2rem}
+.logo h1{font-size:1.6rem;font-weight:700;color:var(--green-dark);line-height:1.2}
+.logo p{color:var(--text-muted);font-size:.9rem;margin-top:.3rem}
+.card{background:var(--surface);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden}
+
+/* tabs */
+.tabs{display:flex;border-bottom:1px solid var(--border)}
+.tab{flex:1;padding:.85rem;font-family:inherit;font-size:.9rem;font-weight:600;color:var(--text-muted);background:none;border:none;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent}
+.tab.active{color:var(--green-mid);border-bottom-color:var(--green-mid);background:#f9fdfb}
+
+/* forms */
+.form-body{padding:1.75rem}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:.82rem;font-weight:600;color:var(--text-muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
+.field input{width:100%;padding:.7rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:.95rem;color:var(--text);background:var(--surface);transition:border-color .2s,box-shadow .2s;outline:none}
+.field input:focus{border-color:var(--green-light);box-shadow:0 0 0 3px rgba(82,183,136,.15)}
+.field input::placeholder{color:#bbb}
+.btn-submit{width:100%;padding:.85rem;background:var(--green-mid);color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:1rem;font-weight:600;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.btn-submit:hover{background:var(--green-dark)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed}
+.msg{margin-top:1rem;padding:.7rem 1rem;border-radius:8px;font-size:.88rem;display:none}
+.msg.error{background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;display:block}
+.msg.success{background:#dcfce7;color:#166534;border:1px solid #bbf7d0;display:block}
+
+.panel{display:none}
+.panel.active{display:block}
+
+.divider{text-align:center;margin:1rem 0;color:var(--text-muted);font-size:.82rem}
+.back-link{text-align:center;margin-top:1.25rem}
+.back-link a{color:var(--green-mid);font-size:.88rem;text-decoration:none;font-weight:500}
+.back-link a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">
+    <h1>🌿 Vivero Eucalipto</h1>
+    <p>Gestión de patologías en vivero</p>
+  </div>
+
+  <div class="card">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('login')">Iniciar sesión</button>
+      <button class="tab" onclick="showTab('register')">Registrarse</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="panel-login" class="panel active">
+      <div class="form-body">
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="login-email" placeholder="su@email.com" autocomplete="email"/>
+        </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <input type="password" id="login-senha" placeholder="••••••••" autocomplete="current-password"/>
+        </div>
+        <button class="btn-submit" id="btn-login" onclick="doLogin()">Entrar</button>
+        <div class="msg" id="login-msg"></div>
+      </div>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="panel-register" class="panel">
+      <div class="form-body">
+        <div class="field">
+          <label>Nombre completo</label>
+          <input type="text" id="reg-nome" placeholder="Tu nombre" autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="reg-email" placeholder="su@email.com" autocomplete="email"/>
+        </div>
+        <div class="field">
+          <label>Contraseña <span style="font-weight:400;color:#aaa">(mín. 6 caracteres)</span></label>
+          <input type="password" id="reg-senha" placeholder="••••••••" autocomplete="new-password"/>
+        </div>
+        <div class="field">
+          <label>Confirmar contraseña</label>
+          <input type="password" id="reg-senha2" placeholder="••••••••" autocomplete="new-password"/>
+        </div>
+        <button class="btn-submit" id="btn-register" onclick="doRegister()">Crear cuenta</button>
+        <div class="msg" id="register-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-link"><a href="/">← Volver al catálogo</a></div>
+</div>
+
+<script>
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.tab[onclick*="${tab}"]`).classList.add('active');
+  document.getElementById(`panel-${tab}`).classList.add('active');
+  document.getElementById(`${tab}-msg`).className = 'msg';
+}
+
+function showMsg(id, text, type) {
+  const el = document.getElementById(id);
+  el.textContent = text;
+  el.className = `msg ${type}`;
+}
+
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const senha = document.getElementById('login-senha').value;
+  if (!email || !senha) return showMsg('login-msg', 'Complete todos los campos.', 'error');
+  const btn = document.getElementById('btn-login');
+  btn.disabled = true; btn.textContent = 'Verificando…';
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email, senha })
+    });
+    const data = await res.json();
+    if (!res.ok) { showMsg('login-msg', data.erro || 'Error al iniciar sesión.', 'error'); }
+    else { showMsg('login-msg', `Bienvenido/a, ${data.nome}! Redirigiendo…`, 'success'); setTimeout(() => location.href='/', 1000); }
+  } catch(e) { showMsg('login-msg', 'Error de conexión.', 'error'); }
+  btn.disabled = false; btn.textContent = 'Entrar';
+}
+
+async function doRegister() {
+  const nome = document.getElementById('reg-nome').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const senha = document.getElementById('reg-senha').value;
+  const senha2 = document.getElementById('reg-senha2').value;
+  if (!nome || !email || !senha) return showMsg('register-msg', 'Complete todos los campos.', 'error');
+  if (senha !== senha2) return showMsg('register-msg', 'Las contraseñas no coinciden.', 'error');
+  if (senha.length < 6) return showMsg('register-msg', 'La contraseña debe tener al menos 6 caracteres.', 'error');
+  const btn = document.getElementById('btn-register');
+  btn.disabled = true; btn.textContent = 'Creando cuenta…';
+  try {
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ nome, email, senha })
+    });
+    const data = await res.json();
+    if (!res.ok) { showMsg('register-msg', data.erro || 'Error al registrar.', 'error'); }
+    else { showMsg('register-msg', `Cuenta creada con éxito. Bienvenido/a, ${data.nome}!`, 'success'); setTimeout(() => location.href='/', 1200); }
+  } catch(e) { showMsg('register-msg', 'Error de conexión.', 'error'); }
+  btn.disabled = false; btn.textContent = 'Crear cuenta';
+}
+
+// Enter key support
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  if (document.getElementById('panel-login').classList.contains('active')) doLogin();
+  else doRegister();
+});
+</script>
+</body>
+</html>
