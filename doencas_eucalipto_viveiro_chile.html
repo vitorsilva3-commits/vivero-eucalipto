@@ -192,6 +192,24 @@
     color: var(--text-muted);
     white-space: nowrap;
   }
+  .sev-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    background: var(--surface);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .sev-btn:hover { border-color: var(--green-mid); color: var(--green-mid); }
+  .sev-btn.selected { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+  .sev-btn[data-sev="alta"].selected { background: #ef4444; border-color: #ef4444; }
+  .sev-btn[data-sev="media"].selected { background: #f59e0b; border-color: #f59e0b; }
+  .sev-btn[data-sev="baja"].selected { background: #22c55e; border-color: #22c55e; }
   .filter-btn:hover { background: var(--bg2); }
   .filter-btn.selected {
     background: var(--green-dark);
@@ -860,6 +878,12 @@
       <button class="filter-btn" data-filter="insecto">Insecto</button>
       <button class="btn-foto-filter" id="btnFotoFilter" onclick="toggleFotoFilter()" title="Solo mostrar entradas con foto">📷 Con foto</button>
     </div>
+    <div class="filter-row" style="margin-bottom:0.75rem">
+      <button class="sev-btn selected" data-sev="todos">Toda severidad</button>
+      <button class="sev-btn" data-sev="alta">🔴 Alta</button>
+      <button class="sev-btn" data-sev="media">🟡 Media</button>
+      <button class="sev-btn" data-sev="baja">🟢 Baja</button>
+    </div>
     <div class="month-filter-row" id="monthFilterRow"></div>
 
     <div class="legend">
@@ -1096,6 +1120,8 @@
 <script>
 // ──── ESTADO GLOBAL ────
 let diseases = [];
+let compareIds = [];
+let pendingDeleteId = null;
 
 // ──── HELPERS DE TEMPORADA ────
 const MONTH_NAMES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -1235,6 +1261,7 @@ function updateStats() {
 
 // ──── FILTER & SEARCH ────
 let currentFilter = 'todos';
+let currentSeverityFilter = 'todos';
 let currentSearch = '';
 let currentSort = 'default';
 let currentMonthFilter = 0; // 0 = all months
@@ -1274,6 +1301,7 @@ function toggleDarkMode() {
 function applyFilters() {
   let list = [...diseases];
   if (currentFilter !== 'todos') list = list.filter(d => d.type === currentFilter);
+  if (currentSeverityFilter !== 'todos') list = list.filter(d => d.severity === currentSeverityFilter);
   if (currentMonthFilter > 0) list = list.filter(d => (d.peakMonths || []).includes(currentMonthFilter));
   if (showOnlyWithPhoto) list = list.filter(d => (d.photos && d.photos.length > 0) || d.photo);
   if (currentSearch) {
@@ -1528,8 +1556,54 @@ async function saveDisease() {
   }
 }
 
+// ──── COMPARE TOGGLE ────
+function toggleCompare(id, event) {
+  event && event.stopPropagation();
+  const idx = compareIds.indexOf(id);
+  if (idx === -1) compareIds.push(id); else compareIds.splice(idx, 1);
+  applyFilters();
+}
+
+// ──── DELETE CONFIRM ────
+function openDeleteConfirm(id) {
+  pendingDeleteId = id;
+  const d = diseases.find(x => x.id === id);
+  document.getElementById('deleteConfirmName').textContent = d
+    ? `¿Eliminar "${d.name}"? Esta acción no se puede deshacer.`
+    : 'Esta acción no se puede deshacer.';
+  document.getElementById('deleteConfirm').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDeleteConfirm() {
+  document.getElementById('deleteConfirm').classList.remove('open');
+  document.body.style.overflow = '';
+  pendingDeleteId = null;
+}
+async function confirmDelete() {
+  if (!pendingDeleteId) return;
+  try {
+    const res = await fetch(`/api/doencas/${pendingDeleteId}`, { method: 'DELETE' });
+    if (!res.ok) throw new Error('Error al eliminar');
+    diseases = diseases.filter(d => d.id !== pendingDeleteId);
+    closeDeleteConfirm();
+    updateStats();
+    applyFilters();
+  } catch(e) {
+    alert('Error al eliminar. Verifique la conexión.');
+  }
+}
+
+// ──── SEVERITY FILTER BUTTONS ────
+document.querySelectorAll('.sev-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sev-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    currentSeverityFilter = btn.dataset.sev;
+    applyFilters();
+  });
+});
+
 init();
 </script>
 </body>
 </html>
-                                             
